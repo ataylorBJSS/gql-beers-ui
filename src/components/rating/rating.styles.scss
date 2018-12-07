@@ -1,0 +1,21 @@
+.full {
+    color: goldenrod;
+}
+
+.empty {
+    color: gray;
+}
+
+.ratingsWrapper {
+    position: relative;
+    display: block;
+    padding: 10px 0;
+}
+
+.counter {
+    position: absolute;
+    font-size: 0.7rem;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 3px;
+}

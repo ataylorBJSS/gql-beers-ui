@@ -1,0 +1,29 @@
+.modalContainer {
+    padding: 40px;
+}
+
+.modalHeader {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 25px;
+    .headerDetails {
+        margin-left: 30px;
+        text-align: left;
+        font-size: 1.2em;
+        width: 60%;
+        margin-top: 30px;
+        div:first-of-type {
+            font-weight: Bold;
+            padding-bottom: 10px;
+        }
+    }
+}
+
+.moreDetails {
+    padding-top: 20px;
+    border-top: 1px solid lightgray;
+    margin-top: 20px;
+    div {
+        text-align: left;
+    }
+}

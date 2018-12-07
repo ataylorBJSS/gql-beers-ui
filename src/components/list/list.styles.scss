@@ -1,0 +1,12 @@
+.listContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.listItem {
+    width: 300px;
+    padding: 10px;
+}
