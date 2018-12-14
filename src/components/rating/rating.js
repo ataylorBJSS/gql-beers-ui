@@ -2,15 +2,16 @@ import React from 'react'
 import { Mutation } from 'react-apollo'
 import Rating from 'react-rating'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './rating.styles.scss'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { ADD_RATING, QRY_BEER, QRY_BEERS_LIST } from '../../graphql/schema'
+import './rating.styles.scss'
 
 const ratingComponent = props => {
     const { beerId, rating, modal } = props
     const query = modal ? { query: QRY_BEER, variables: { id: beerId } } : { query: QRY_BEERS_LIST }
     return (
         <Mutation mutation={ADD_RATING} refetchQueries={[query]}>
-            {(addRating, { data }) => {
+            {addRating => {
                 const newRating = rating.average
                 const newCount = rating.count
                 return (
@@ -22,12 +23,14 @@ const ratingComponent = props => {
                             start={0}
                             stop={5}
                             fractions={2}
-                            placeholderSymbol={<FontAwesomeIcon icon="star" className="full" />}
-                            emptySymbol={<FontAwesomeIcon icon="star" className="empty" />}
-                            fullSymbol={<FontAwesomeIcon icon="star" className="full" />}
+                            placeholderSymbol={<FontAwesomeIcon icon={faStar} className="full" />}
+                            emptySymbol={<FontAwesomeIcon icon={faStar} className="empty" />}
+                            fullSymbol={<FontAwesomeIcon icon={faStar} className="full" />}
                             placeholderRating={Math.round(newRating * 2) / 2}
                         />
-                        <div className="counter">({newCount})</div>
+                        <div data-testid="ratings-counter" className="counter">
+                            ({newCount})
+                        </div>
                     </div>
                 )
             }}

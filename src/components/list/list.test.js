@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, wait, cleanup } from 'react-testing-library'
+import { render, cleanup, waitUntilLoadingIsFinished } from '../../libs/testUtils'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { BeerList } from './index'
 import { QRY_BEERS_LIST } from '../../graphql/schema'
@@ -64,9 +64,3 @@ it('renders data', async () => {
 
     expect(container).toMatchSnapshot()
 })
-
-const waitUntilLoadingIsFinished = queryByText =>
-    wait(() => {
-        const isLoading = queryByText('Loading') != null
-        expect(isLoading).toBe(false)
-    })
