@@ -14,19 +14,24 @@ const modal = () => {
                 <Modal visible={modal.state.show} width="50%" effect="fadeInUp" onClickAway={() => modal.closeModal()}>
                     <Query query={QRY_BEER} variables={{ id: modal.state.id }}>
                         {({ loading, error, data }) => {
+                            console.log('refetching beer query')
                             if (loading) return <p>Getting some beer details.....</p>
                             if (error) return <p>Boom!</p>
                             return (
                                 <div className="modalContainer">
                                     <div className="modalHeader">
-                                        <img src={data.beer.image_url} alt={data.beer.name} width={75} height={250} />
+                                        <img src={data.beer.image_url} alt={data.beer.name} width={80} height={250} />
                                         <div className="headerDetails">
                                             <div>
                                                 {data.beer.name} (abv{data.beer.abv})
                                             </div>
                                             <div>{data.beer.tagline}</div>
 
-                                            <Ratings beerId={modal.state.id} rating={data.beer.ratings.total} />
+                                            <Ratings
+                                                modal={true}
+                                                beerId={modal.state.id}
+                                                rating={data.beer.ratings.total}
+                                            />
                                         </div>
                                     </div>
                                     <div>{data.beer.description}</div>

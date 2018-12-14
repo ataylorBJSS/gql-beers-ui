@@ -1,5 +1,18 @@
 import gql from 'graphql-tag'
 
+// Example of how we can use fragments
+// const beerDetails = gql`
+//     fragment BeerDetails on Beer {
+//         id
+//         name
+//         tagline
+//         image_url
+//         abv
+//         srm
+//         ebc
+//     }
+// `
+
 export const QRY_BEERS_LIST = gql`
     {
         beers {
@@ -7,6 +20,9 @@ export const QRY_BEERS_LIST = gql`
             name
             tagline
             image_url
+            abv
+            srm
+            ebc
             ratings {
                 total {
                     average
@@ -23,8 +39,10 @@ export const QRY_BEER = gql`
             id
             name
             tagline
-            abv
             image_url
+            abv
+            srm
+            ebc
             description
             first_brewed
             food_pairing
@@ -44,9 +62,6 @@ export const QRY_BEER = gql`
 
 export const ADD_RATING = gql`
     mutation AddRating($parameters: RatingParameters) {
-        addRating(parameters: $parameters) {
-            average
-            count
-        }
+        addRating(parameters: $parameters)
     }
 `

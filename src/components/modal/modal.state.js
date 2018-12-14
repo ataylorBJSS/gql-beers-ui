@@ -11,7 +11,8 @@ class ModalContainer extends Container {
         this.setState({ show: true, id })
     }
 
-    closeModal() {
+    closeModal(...args) {
+        console.log('why u close', args)
         this.setState({ show: false, id: null, showMore: false })
     }
 

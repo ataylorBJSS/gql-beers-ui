@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders data 1`] = `
+<div>
+  <div
+    class="listContainer"
+  >
+    <div
+      class="listItem"
+    >
+      <div>
+        <img
+          alt="name"
+          src="_IMAGEURL_"
+        />
+      </div>
+      <div>
+        name
+      </div>
+      <div>
+        tagline
+      </div>
+      <div
+        class="abv beer-color-10"
+      >
+        4.2
+        %
+      </div>
+      <div
+        class="ratingsWrapper"
+      >
+        <span
+          style="display: inline-block; direction: ltr;"
+        >
+          <span
+            style="cursor: pointer; display: inline-block; position: relative;"
+          >
+            <span
+              style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%;"
+            />
+          </span>
+          <span
+            style="cursor: pointer; display: inline-block; position: relative;"
+          >
+            <span
+              style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%;"
+            />
+          </span>
+          <span
+            style="cursor: pointer; display: inline-block; position: relative;"
+          >
+            <span
+              style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%;"
+            />
+          </span>
+          <span
+            style="cursor: pointer; display: inline-block; position: relative;"
+          >
+            <span
+              style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 100%;"
+            />
+          </span>
+          <span
+            style="cursor: pointer; display: inline-block; position: relative;"
+          >
+            <span
+              style="display: inline-block; position: absolute; overflow: hidden; top: 0px; left: 0px; width: 0%;"
+            />
+          </span>
+        </span>
+        <div
+          class="counter"
+        >
+          (
+          3
+          )
+        </div>
+      </div>
+      <button>
+        View Details
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders loading 1`] = `
+<div>
+  <p>
+    Getting some beers.....
+  </p>
+</div>
+`;

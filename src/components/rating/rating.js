@@ -3,15 +3,16 @@ import { Mutation } from 'react-apollo'
 import Rating from 'react-rating'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './rating.styles.scss'
-import { ADD_RATING } from '../../graphql/schema'
+import { ADD_RATING, QRY_BEER, QRY_BEERS_LIST } from '../../graphql/schema'
 
 const ratingComponent = props => {
-    const { beerId, rating } = props
+    const { beerId, rating, modal } = props
+    const query = modal ? { query: QRY_BEER, variables: { id: beerId } } : { query: QRY_BEERS_LIST }
     return (
-        <Mutation mutation={ADD_RATING}>
+        <Mutation mutation={ADD_RATING} refetchQueries={[query]}>
             {(addRating, { data }) => {
-                const newRating = data ? data.addRating.average : rating.average
-                const newCount = data ? data.addRating.count : rating.count
+                const newRating = rating.average
+                const newCount = rating.count
                 return (
                     <div className="ratingsWrapper">
                         <Rating

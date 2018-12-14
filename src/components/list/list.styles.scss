@@ -9,4 +9,39 @@
 .listItem {
     width: 300px;
     padding: 10px;
+    position: relative;
+    margin-bottom: 20px;
+    >div:nth-of-type(1) {
+        height: 250px;
+        position: relative;
+        img {
+            max-height: 250px;
+            max-width: 80px;
+            width: auto;
+            height: auto;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+    }
+    >div:nth-of-type(3) {
+        padding: 5px;
+        font-size: 0.8em;
+        height: 20px;
+    }
+    .abv {
+        top: 190px;
+        position: absolute;
+        right: 70px;
+    }
+}
+
+$colors-list: #f8f4b4 #f9e06c #f4ce51 #f2be37 #edac1e #e59c19 #df8f15 #d68019 #cf731c #bd591c #c3621b #c86b1b #b7521a #ad4417 #ae4818 #ad4417 #a73d15 #9e3313 #9a2f16 #922914 #8d2615 #882413 #832211 #7c2110 #771e0e #731c0b #400c0e #6a160b #67120b #63100a #5e0d09 #5a0a0a #58080b #53080b #4b090b #450b0a #400c0e #3b0a0d #240a0b;
+@each $current-color in $colors-list {
+    $i: index($colors-list, $current-color);
+    .beer-color-#{$i + 1} {
+        border-bottom: 10px solid $current-color;
+    }
 }

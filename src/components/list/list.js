@@ -9,27 +9,27 @@ import ModalContainer from '../modal/modal.state'
 
 const list = props => {
     return (
-        <Query query={QRY_BEERS_LIST}>
-            {({ loading, error, data }) => {
-                if (loading) return <p>Getting some beers.....</p>
-                if (error) return <p>Beers gone everywhere!</p>
+        <Provider>
+            <Query query={QRY_BEERS_LIST}>
+                {({ loading, error, data }) => {
+                    if (loading) return <p>Getting some beers.....</p>
+                    if (error) return <p>Beers gone everywhere!</p>
 
-                return (
-                    <Provider>
+                    return (
                         <div className="listContainer">
                             {data.beers.map(beer => (
                                 <ListItem key={`item_${beer.id}`} data={beer} />
                             ))}
                         </div>
-                        <Subscribe to={[ModalContainer]}>
-                            {modal => {
-                                return <React.Fragment>{modal.state.show && <Modal />}</React.Fragment>
-                            }}
-                        </Subscribe>
-                    </Provider>
-                )
-            }}
-        </Query>
+                    )
+                }}
+            </Query>
+            <Subscribe to={[ModalContainer]}>
+                {modal => {
+                    return <React.Fragment>{modal.state.show && <Modal />}</React.Fragment>
+                }}
+            </Subscribe>
+        </Provider>
     )
 }
 
