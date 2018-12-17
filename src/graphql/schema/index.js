@@ -1,6 +1,7 @@
 import gql from 'graphql-tag'
 
 // Example of how we can use fragments
+// Removed for now, as there are issue with mocking queries with fragments
 // const beerDetails = gql`
 //     fragment BeerDetails on Beer {
 //         id

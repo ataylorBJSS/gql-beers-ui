@@ -230,6 +230,14 @@ exports[`renders data 1`] = `
 </div>
 `;
 
+exports[`renders errors 1`] = `
+<div>
+  <p>
+    Beers gone everywhere!
+  </p>
+</div>
+`;
+
 exports[`renders loading 1`] = `
 <div>
   <p>

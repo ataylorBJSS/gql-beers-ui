@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, cleanup, waitUntilLoadingIsFinished } from '../../libs/testUtils'
+import { render, cleanup, waitUntilLoadingIsFinished, waitForErrorMessage } from '../../libs/testUtils'
 import { MockedProvider } from 'react-apollo/test-utils'
 import { BeerList } from './index'
 import { QRY_BEERS_LIST } from '../../graphql/schema'
@@ -53,6 +53,20 @@ it('renders loading', () => {
     expect(container).toMatchSnapshot()
 })
 
+it('renders errors', async () => {
+    const [data] = mocks
+    const mock = { ...data, error: new Error('Error') }
+    const { queryByText, container } = render(
+        <MockedProvider mocks={[mock]} addTypename={false}>
+            <BeerList />
+        </MockedProvider>
+    )
+
+    await waitForErrorMessage(queryByText, 'Beers gone everywhere!')
+
+    expect(container).toMatchSnapshot()
+})
+
 it('renders data', async () => {
     const { queryByText, container } = render(
         <MockedProvider mocks={mocks} addTypename={false}>
@@ -60,7 +74,7 @@ it('renders data', async () => {
         </MockedProvider>
     )
 
-    await waitUntilLoadingIsFinished(queryByText)
+    await waitUntilLoadingIsFinished(queryByText, 'Getting some beers.....')
 
     expect(container).toMatchSnapshot()
 })

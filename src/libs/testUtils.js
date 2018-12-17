@@ -2,10 +2,16 @@ import { wait } from 'react-testing-library'
 
 export * from 'react-testing-library'
 
-const waitUntilLoadingIsFinished = queryByText =>
+const waitUntilLoadingIsFinished = (queryByText, loadingText) =>
     wait(() => {
-        const isLoading = queryByText('Loading') != null
+        const isLoading = queryByText(loadingText) != null
         expect(isLoading).toBe(false)
     })
 
-export { waitUntilLoadingIsFinished }
+const waitForErrorMessage = (queryByText, ErrText) =>
+    wait(() => {
+        const hasError = queryByText(ErrText) != null
+        expect(hasError).toBe(true)
+    })
+
+export { waitUntilLoadingIsFinished, waitForErrorMessage }

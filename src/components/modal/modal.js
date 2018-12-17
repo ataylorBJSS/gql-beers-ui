@@ -14,7 +14,6 @@ const modal = () => {
                 <Modal visible={modal.state.show} width="50%" effect="fadeInUp" onClickAway={() => modal.closeModal()}>
                     <Query query={QRY_BEER} variables={{ id: modal.state.id }}>
                         {({ loading, error, data }) => {
-                            console.log('refetching beer query')
                             if (loading) return <p>Getting some beer details.....</p>
                             if (error) return <p>Boom!</p>
                             return (
